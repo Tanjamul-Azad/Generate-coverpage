@@ -13,4 +13,7 @@ export interface CoverData {
   section: string;
   trimester: string;
   submissionDate: string;
+  isGroup: boolean;
+  groupName?: string;
+  groupMembers?: { name: string; id: string }[];
 }
