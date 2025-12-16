@@ -101,7 +101,7 @@ export const CoverPreview: React.FC<CoverPreviewProps> = ({ data, isVisible, the
                                 <div className="w-full text-center mt-2">
                                     <UiuMonogramLogo className="w-28 h-auto mx-auto mb-4" />
                                     <h1
-                                        className="text-3xl sm:text-4xl font-extrabold tracking-wide uppercase leading-tight"
+                                        className="text-2xl sm:text-3xl font-extrabold tracking-wide uppercase leading-tight whitespace-nowrap"
                                         style={{ color: themeColor }}
                                     >
                                         {data.university || 'United International University'}
@@ -145,38 +145,26 @@ export const CoverPreview: React.FC<CoverPreviewProps> = ({ data, isVisible, the
                                     </div>
 
                                     {/* --- Submission Info --- */}
-                                    <div className="w-full grid grid-cols-2 gap-8 px-8 mt-4 items-start">
-                                        {/* Submitted To */}
-                                        <div className="text-center">
-                                            <div className="inline-block border-b-2 border-gray-300 pb-1 mb-5">
-                                                <span className="text-sm font-bold uppercase tracking-widest text-gray-500">Submitted To</span>
-                                            </div>
-                                            <div>
-                                                <p className="text-xl font-bold text-gray-900 mb-1">{data.submittedTo || 'Instructor Name'}</p>
-                                                <p className="text-base text-gray-600 italic">{data.instructorDesignation || 'Designation'}</p>
-                                            </div>
-                                        </div>
-
-                                        {/* Submitted By */}
-                                        <div className="text-center w-full">
-                                            <div className="inline-block border-b-2 border-gray-300 pb-1 mb-5">
-                                                <span className="text-sm font-bold uppercase tracking-widest text-gray-500">Submitted By</span>
-                                            </div>
-
-                                            {data.isGroup ? (
+                                    {data.isGroup ? (
+                                        /* Group: Submitted By Table Only (Full Width) */
+                                        <div className="w-full px-8 mt-4">
+                                            <div className="text-center w-full">
+                                                <div className="inline-block border-b-2 border-gray-300 pb-1 mb-5">
+                                                    <span className="text-sm font-bold uppercase tracking-widest text-gray-500">Submitted By</span>
+                                                </div>
                                                 <div className="w-full flex flex-col items-center">
                                                     <p className="text-lg font-bold mb-3 text-gray-800">{data.groupName || 'Group Name'}</p>
-                                                    <div className="w-full border border-gray-300 rounded-lg overflow-hidden bg-white shadow-sm">
+                                                    <div className="w-full max-w-xl border border-gray-300 rounded-lg overflow-hidden bg-white shadow-sm">
                                                         <div className="bg-gray-100 border-b border-gray-300 flex text-xs font-bold text-black uppercase tracking-wider">
                                                             <div className="flex-1 py-2 px-3 text-left border-r border-gray-300">Name</div>
-                                                            <div className="w-24 py-2 px-3 text-center">ID</div>
+                                                            <div className="w-32 py-2 px-3 text-center">ID</div>
                                                         </div>
                                                         <div>
                                                             {(data.groupMembers && data.groupMembers.length > 0) ? (
                                                                 data.groupMembers.map((member, index) => (
                                                                     <div key={index} className="flex text-sm border-b last:border-0 border-gray-200 hover:bg-gray-50 transition-colors">
-                                                                        <div className="flex-1 py-2 px-3 text-left font-bold text-black truncate border-r border-gray-200" title={member.name}>{member.name}</div>
-                                                                        <div className="w-24 py-2 px-3 text-center font-bold text-black">{member.id}</div>
+                                                                        <div className="flex-1 py-2 px-3 text-left font-bold text-black border-r border-gray-200 break-words">{member.name}</div>
+                                                                        <div className="w-32 py-2 px-3 text-center font-bold text-black flex items-center justify-center">{member.id}</div>
                                                                     </div>
                                                                 ))
                                                             ) : (
@@ -185,22 +173,63 @@ export const CoverPreview: React.FC<CoverPreviewProps> = ({ data, isVisible, the
                                                         </div>
                                                     </div>
                                                 </div>
-                                            ) : (
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        /* Individual: 2-Column Grid */
+                                        <div className="w-full grid grid-cols-2 gap-8 px-8 mt-4 items-start">
+                                            {/* Submitted To */}
+                                            <div className="text-center">
+                                                <div className="inline-block border-b-2 border-gray-300 pb-1 mb-5">
+                                                    <span className="text-sm font-bold uppercase tracking-widest text-gray-500">Submitted To</span>
+                                                </div>
+                                                <div>
+                                                    <p className="text-xl font-bold text-gray-900 mb-1">{data.submittedTo || 'Instructor Name'}</p>
+                                                    <p className="text-base text-gray-600 italic">{data.instructorDesignation || 'Designation'}</p>
+                                                </div>
+                                            </div>
+
+                                            {/* Submitted By */}
+                                            <div className="text-center w-full">
+                                                <div className="inline-block border-b-2 border-gray-300 pb-1 mb-5">
+                                                    <span className="text-sm font-bold uppercase tracking-widest text-gray-500">Submitted By</span>
+                                                </div>
                                                 <div>
                                                     <p className="text-xl font-bold text-gray-900 mb-1">{data.submittedBy || 'Student Name'}</p>
                                                     <p className="text-lg text-gray-700">ID: {data.studentId || '________'}</p>
                                                 </div>
-                                            )}
+                                            </div>
                                         </div>
-                                    </div>
+                                    )}
                                 </div>
 
                                 {/* === FOOTER === */}
-                                <div className="w-full text-center pb-4">
-                                    <p className="text-base font-medium text-gray-600">
-                                        Date of Submission: <span className="text-black font-semibold ml-2">{formatDate(data.submissionDate)}</span>
-                                    </p>
-                                </div>
+                                {data.isGroup ? (
+                                    /* Group Footer: Submitted To (Left) & Date (Right) */
+                                    <div className="w-full flex justify-between items-end px-8 pb-8">
+                                        <div className="text-left">
+                                            <div className="inline-block border-b-2 border-gray-300 pb-1 mb-3">
+                                                <span className="text-sm font-bold uppercase tracking-widest text-gray-500">Submitted To</span>
+                                            </div>
+                                            <div>
+                                                <p className="text-xl font-bold text-gray-900 mb-1">{data.submittedTo || 'Instructor Name'}</p>
+                                                <p className="text-base text-gray-600 italic">{data.instructorDesignation || 'Designation'}</p>
+                                            </div>
+                                        </div>
+                                        <div className="text-right">
+                                            <p className="text-base font-medium text-gray-600">
+                                                Date of Submission: <span className="text-black font-semibold ml-2 block sm:inline">{formatDate(data.submissionDate)}</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    /* Individual Footer: Date Only (Center) */
+                                    <div className="w-full text-center pb-4">
+                                        <p className="text-base font-medium text-gray-600">
+                                            Date of Submission: <span className="text-black font-semibold ml-2">{formatDate(data.submissionDate)}</span>
+                                        </p>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>
