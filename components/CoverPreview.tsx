@@ -109,7 +109,7 @@ export const CoverPreview: React.FC<CoverPreviewProps> = ({ data, isVisible, the
                                 </div>
 
                                 {/* === MAIN CONTENT === */}
-                                <div className="flex-grow w-full flex flex-col justify-center gap-10 py-4">
+                                <div className="flex-grow w-full flex flex-col justify-center gap-5 py-2">
 
                                     {/* --- Assignment Title --- */}
                                     <div className="text-center px-4">
@@ -120,7 +120,7 @@ export const CoverPreview: React.FC<CoverPreviewProps> = ({ data, isVisible, the
 
                                     {/* --- Course Details --- */}
                                     <div className="w-full max-w-2xl mx-auto px-6">
-                                        <div className="flex flex-col gap-4 text-lg leading-relaxed">
+                                        <div className="flex flex-col gap-2 text-lg leading-relaxed">
                                             <div className="flex items-baseline gap-4">
                                                 <span className="font-bold text-gray-700 min-w-[140px] text-right">Course Title :</span>
                                                 <span className="font-medium text-gray-900 flex-1 border-b-[1.5px] border-gray-400 border-dotted pb-0.5">{courseTitle || ''}</span>
@@ -149,22 +149,22 @@ export const CoverPreview: React.FC<CoverPreviewProps> = ({ data, isVisible, the
                                         /* Group: Submitted By Table Only (Full Width) */
                                         <div className="w-full px-8 mt-4">
                                             <div className="text-center w-full">
-                                                <div className="inline-block border-b-2 border-gray-300 pb-1 mb-5">
+                                                <div className="inline-block border-b-2 border-gray-300 pb-1 mb-2">
                                                     <span className="text-sm font-bold uppercase tracking-widest text-gray-500">Submitted By</span>
                                                 </div>
                                                 <div className="w-full flex flex-col items-center">
-                                                    <p className="text-lg font-bold mb-3 text-gray-800">{data.groupName || 'Group Name'}</p>
+                                                    <p className="text-lg font-bold mb-1 text-gray-800">{data.groupName || 'Group Name'}</p>
                                                     <div className="w-full max-w-xl border border-gray-300 rounded-lg overflow-hidden bg-white shadow-sm">
                                                         <div className="bg-gray-100 border-b border-gray-300 flex text-xs font-bold text-black uppercase tracking-wider">
-                                                            <div className="flex-1 py-2 px-3 text-left border-r border-gray-300">Name</div>
-                                                            <div className="w-32 py-2 px-3 text-center">ID</div>
+                                                            <div className="flex-1 py-1 px-3 text-left border-r border-gray-300">Name</div>
+                                                            <div className="w-32 py-1 px-3 text-center">ID</div>
                                                         </div>
                                                         <div>
                                                             {(data.groupMembers && data.groupMembers.length > 0) ? (
                                                                 data.groupMembers.map((member, index) => (
                                                                     <div key={index} className="flex text-sm border-b last:border-0 border-gray-200 hover:bg-gray-50 transition-colors">
-                                                                        <div className="flex-1 py-2 px-3 text-left font-bold text-black border-r border-gray-200 break-words">{member.name}</div>
-                                                                        <div className="w-32 py-2 px-3 text-center font-bold text-black flex items-center justify-center">{member.id}</div>
+                                                                        <div className="flex-1 py-1 px-3 text-left font-bold text-black border-r border-gray-200 break-words">{member.name}</div>
+                                                                        <div className="w-32 py-1 px-3 text-center font-bold text-black flex items-center justify-center">{member.id}</div>
                                                                     </div>
                                                                 ))
                                                             ) : (
