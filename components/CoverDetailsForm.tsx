@@ -225,7 +225,10 @@ export const CoverDetailsForm: React.FC<CoverDetailsFormProps> = ({ data, onData
                                     </button>
                                 </div>
 
-                                <InputField label="Group Name / No." name="groupName" value={data.groupName || ''} onChange={onDataChange} placeholder="e.g., Group 6" required error={!!errors.groupName} />
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                    <InputField label="Group Name / No." name="groupName" value={data.groupName || ''} onChange={onDataChange} placeholder="e.g., Group 6" required error={!!errors.groupName} />
+                                    <SelectField label="Section" name="section" value={data.section} onChange={onDataChange} options={SECTIONS} placeholder="Select" required error={!!errors.section} />
+                                </div>
 
                                 <div className="space-y-3">
                                     <label className="block text-xs font-bold text-gray-500 uppercase tracking-wide">Members List</label>
