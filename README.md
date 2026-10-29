@@ -1,25 +1,31 @@
 # UIU Assignment Cover Page Generator
 
-A web application to generate cover pages for United International University assignments.
+Generate a properly formatted cover page for United International University assignments and reports, then merge it with your main script.
 
-## Live Demo
+[![Live demo](https://img.shields.io/badge/demo-live-000000?style=flat-square&logo=github&logoColor=white)](https://tanjamul-azad.github.io/Generate-coverpage/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 
-Visit the live application at: [https://tanjamul-azad.github.io/Generate-coverpage/](https://tanjamul-azad.github.io/Generate-coverpage/)
+**Try it:** https://tanjamul-azad.github.io/Generate-coverpage/
+
+## Features
+
+- Fill in your course, student and teacher details and get a ready cover page
+- Merge the cover page with your main PDF in the browser
+- Runs entirely client-side, so your files stay on your device
 
 ## Development
 
-To run this project locally:
-
 ```bash
-# Install dependencies
 npm install
-
-# Start development server
 npm run dev
 ```
 
-The development server will start at [http://localhost:3000](http://localhost:3000)
+The dev server runs at [http://localhost:3000](http://localhost:3000).
 
 ## Deployment
 
-This project is automatically deployed to GitHub Pages when changes are pushed to the master branch.
+Pushes to `master` are deployed to GitHub Pages automatically.
+
+## Author
+
+Built by [Tanzamul Azad](https://tanzamul.dev).
